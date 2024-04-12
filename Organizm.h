@@ -7,19 +7,27 @@
 
 #include "Swiat.h"
 
+class Swiat;
+
 class Organizm {
 private:
     int sila;
     int inicjatywa;
-    int x;
-    int y;
     Swiat *swiat;
+protected:
+    int x, y;
 public:
-    virtual void akcja();
-    virtual void kolicja();
-    virtual void rysowanie();
+    Organizm(int sila, int ini, int posX, int posY, Swiat *swiat) : sila(sila), inicjatywa(ini), x(posX), y(posY), swiat(swiat) {}
 
-    virtual ~Organizm();
+    virtual void akcja();
+    //virtual void kolizja(Organizm *other);
+    virtual void rysowanie();
+    //virtual void wyswietlInfo();
+
+    int getX();
+    int getY();
+    //int getSila();
+    int getIni();
 };
 
 

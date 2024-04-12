@@ -5,14 +5,28 @@
 #ifndef PO1_SWIAT_H
 #define PO1_SWIAT_H
 
+#include <vector>
 #include "Organizm.h"
+
+using  namespace std;
+
+class Organizm;
 
 class Swiat {
 private:
-    Organizm *organizmy;
+    int x, y;
+    vector <Organizm*> organizmy;
 public:
+
+    Swiat(int x, int y) : x(x), y(y){}
+
+    int getX();
+    int getY();
+
+    void addOrganizm(Organizm *nowy);
     void wykonajTure();
     void rysujSwiat();
+
 };
 
 

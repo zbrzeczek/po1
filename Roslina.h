@@ -8,7 +8,14 @@
 #include "Organizm.h"
 
 class Roslina : public Organizm {
+public:
+    Roslina(int sila, int ini, int posX, int posY, Swiat *swiat) : Organizm(sila, ini, posX, posY, swiat) {}
 
+    virtual void spread();
+
+    //void akcja() override {
+    //    spread();
+    //}
 };
 
 
