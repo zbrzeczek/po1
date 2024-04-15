@@ -11,11 +11,13 @@ class Roslina : public Organizm {
 public:
     Roslina(int sila, int ini, int posX, int posY, Swiat *swiat) : Organizm(sila, ini, posX, posY, swiat) {}
 
-    virtual void spread();
+    virtual void rozprz();
 
-    //void akcja() override {
-    //    spread();
-    //}
+    void rysowanie() override;
+
+    void akcja() override {
+        rozprz();
+    }
 };
 
 

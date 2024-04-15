@@ -3,3 +3,11 @@
 //
 
 #include "Trawa.h"
+
+void Trawa::rozprz() {
+
+}
+
+void Trawa::rysowanie() {
+    cout << 'T';
+}

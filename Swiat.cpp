@@ -2,7 +2,6 @@
 // Created by Zuzanna Brzęczek on 20/03/2024.
 //
 
-#include <conio.h>
 #include <iostream>
 #include "Swiat.h"
 
@@ -24,7 +23,6 @@ void Swiat::wykonajTure() {
     }
 }
 void Swiat::rysujSwiat() {
-    clrscr();
     for (int yPole = 0; yPole < getY(); yPole++){
         for(int xPole = 0; xPole< getX(); xPole++){
             for (int o = 0; o < organizmy.size(); o++){

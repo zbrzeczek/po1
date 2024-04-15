@@ -7,7 +7,6 @@
 
 
 #include <iostream>
-#include <conio.h>
 #include "Zwierze.h"
 
 using namespace std;

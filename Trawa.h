@@ -11,7 +11,9 @@ class Trawa : public Roslina{
 public:
     Trawa(int posX, int posY, Swiat* swiat) : Roslina(0, 0, posX, posY, swiat) {}
 
+    void rozprz() override;
 
+    void rysowanie() override;
 };
 
 

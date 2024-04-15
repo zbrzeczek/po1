@@ -2,7 +2,6 @@
 // Created by Zuza on 2024-04-03.
 //
 
-#include <conio.h>
 #include "Czlowiek.h"
 
 void Czlowiek::changePos(int yAdd, int xAdd) {
@@ -12,7 +11,7 @@ void Czlowiek::changePos(int yAdd, int xAdd) {
 
 void Czlowiek::ruch() {
     char ch;
-    ch = _getch();
+    cin >> ch;
     switch (ch) {
         case 'w':
             changePos(-1,0);

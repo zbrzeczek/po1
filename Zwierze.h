@@ -5,7 +5,6 @@
 #ifndef PO1_ZWIERZE_H
 #define PO1_ZWIERZE_H
 
-#include <iostream>
 #include "Organizm.h"
 
 class Zwierze : public Organizm {

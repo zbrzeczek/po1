@@ -5,6 +5,7 @@
 #ifndef PO1_ORGANIZM_H
 #define PO1_ORGANIZM_H
 
+#include <iostream>
 #include "Swiat.h"
 
 class Swiat;

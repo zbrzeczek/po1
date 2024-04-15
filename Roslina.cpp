@@ -3,3 +3,11 @@
 //
 
 #include "Roslina.h"
+
+void Roslina::rozprz() {
+
+}
+
+void Roslina::rysowanie() {
+
+}
