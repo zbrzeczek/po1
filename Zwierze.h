@@ -8,8 +8,10 @@
 #include "Organizm.h"
 
 class Zwierze : public Organizm {
+private:
+    int sila;
 public:
-    Zwierze(int sila, int ini, int posX, int posY, Swiat *swiat) : Organizm(sila, ini, posX, posY, swiat) {}
+    Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(ini, point, swiat), sila(sila) {}
 
     //virtual void rozmnazanie();
     virtual void ruch();

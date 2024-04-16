@@ -11,10 +11,10 @@ void Organizm::akcja() {}
 void Organizm::rysowanie() {}
 
 int Organizm::getX() {
-    return x;
+    return point.x;
 }
 int Organizm::getY() {
-    return y;
+    return point.y;
 }
 /*int Organizm::getSila() {
     return sila;

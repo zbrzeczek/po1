@@ -9,5 +9,5 @@ void Antylopa::ruch() {
 }
 
 void Antylopa::rysowanie() {
-    cout << 'A';
+    std::cout << 'A';
 }

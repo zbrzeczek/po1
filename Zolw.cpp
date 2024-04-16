@@ -8,5 +8,5 @@ void Zolw::ruch() {
 
 }
 void Zolw::rysowanie() {
-    cout << 'Z';
+    std::cout << 'Z';
 }

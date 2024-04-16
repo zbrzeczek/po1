@@ -4,10 +4,11 @@
 
 #include "Wilk.h"
 
+
 void Wilk::ruch() {
 
 }
 
 void Wilk::rysowanie() {
-    cout << 'W';
+    std::cout << 'W';
 }

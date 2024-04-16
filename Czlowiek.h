@@ -6,14 +6,13 @@
 #define PO1_CZLOWIEK_H
 
 
-#include <iostream>
 #include "Zwierze.h"
 
 using namespace std;
 
 class Czlowiek : public Zwierze {
 public:
-    Czlowiek(int posX, int posY, Swiat* swiat) : Zwierze(5, 4, posX, posY, swiat) {}
+    Czlowiek(Point point, Swiat* swiat) : Zwierze(5, 4, point, swiat) {}
 
     void changePos(int yAdd, int xAdd);
 

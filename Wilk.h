@@ -7,9 +7,9 @@
 
 #include "Zwierze.h"
 
-class Wilk : public Zwierze{
+class Wilk : public Zwierze {
 public:
-    Wilk(int posX, int posY, Swiat* swiat) : Zwierze(9, 4, posX, posY, swiat) {}
+    Wilk(Point point, Swiat* swiat) : Zwierze(9, 4, point, swiat) {}
 
     void ruch() override;
     //void rozmnazanie() override;

@@ -9,5 +9,5 @@ void Trawa::rozprz() {
 }
 
 void Trawa::rysowanie() {
-    cout << 'T';
+    std::cout << 'T';
 }

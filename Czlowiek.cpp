@@ -5,8 +5,8 @@
 #include "Czlowiek.h"
 
 void Czlowiek::changePos(int yAdd, int xAdd) {
-    x += xAdd;
-    y += yAdd;
+    point.x += xAdd;
+    point.y += yAdd;
 }
 
 void Czlowiek::ruch() {

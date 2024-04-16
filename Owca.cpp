@@ -7,5 +7,5 @@
 void Owca::ruch() {}
 
 void Owca::rysowanie() {
-    cout << 'O';
+    std::cout << 'O';
 }

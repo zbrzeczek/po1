@@ -9,7 +9,7 @@
 
 class Owca : public Zwierze{
 public:
-    Owca(int posX, int posY, Swiat* swiat) : Zwierze(4, 4, posX, posY, swiat) {}
+    Owca(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
     void ruch() override;
     //void rozmnazanie() override;

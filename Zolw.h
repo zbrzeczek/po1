@@ -9,7 +9,7 @@
 
 class Zolw : public Zwierze{
 public:
-    Zolw(int posX, int posY, Swiat* swiat) : Zwierze(2, 1, posX, posY, swiat) {}
+    Zolw(Point point, Swiat* swiat) : Zwierze(2, 1, point, swiat) {}
 
     void ruch() override;
     //void rozmnazanie() override;

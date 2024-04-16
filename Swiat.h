@@ -5,8 +5,21 @@
 #ifndef PO1_SWIAT_H
 #define PO1_SWIAT_H
 
+#include <iostream>
+#include <cstdlib>
 #include <vector>
-#include "Organizm.h"
+
+#include "Plansza.h"
+#include "Czlowiek.h"
+#include "Wilk.h"
+#include "Owca.h"
+#include "Zolw.h"
+#include "Antylopa.h"
+
+/*//zwierzeta sa od najwiekszej inicjatywy
+#define STADO_LISOW 0
+#define STADO_WILKOW 1
+#define */
 
 using  namespace std;
 
@@ -14,14 +27,16 @@ class Organizm;
 
 class Swiat {
 private:
-    int x, y;
-    vector <Organizm*> organizmy;
+    int width, height;
+    //aha tu nwm co bo rosliny nie maja ini i sie nie ruszaja
+    vector<Organizm *> organizmy;
+    Plansza* planszaGry;
 public:
 
-    Swiat(int x, int y) : x(x), y(y){}
+    Swiat(int width, int height);
 
-    int getX();
-    int getY();
+    int getWidth();
+    int getHeight();
 
     void addOrganizm(Organizm *nowy);
     void wykonajTure();

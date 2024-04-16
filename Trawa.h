@@ -9,7 +9,7 @@
 
 class Trawa : public Roslina{
 public:
-    Trawa(int posX, int posY, Swiat* swiat) : Roslina(0, 0, posX, posY, swiat) {}
+    Trawa(Point point, Swiat* swiat) : Roslina(0, point, swiat) {}
 
     void rozprz() override;
 

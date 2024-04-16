@@ -6,19 +6,18 @@
 #define PO1_ORGANIZM_H
 
 #include <iostream>
-#include "Swiat.h"
+#include "Point.h"
 
 class Swiat;
 
 class Organizm {
 private:
-    int sila;
     int inicjatywa;
     Swiat *swiat;
 protected:
-    int x, y;
+    Point point;
 public:
-    Organizm(int sila, int ini, int posX, int posY, Swiat *swiat) : sila(sila), inicjatywa(ini), x(posX), y(posY), swiat(swiat) {}
+    Organizm(int ini, Point point, Swiat *swiat) : inicjatywa(ini), point(point), swiat(swiat) {}
 
     virtual void akcja();
     //virtual void kolizja(Organizm *other);
@@ -27,7 +26,6 @@ public:
 
     int getX();
     int getY();
-    //int getSila();
     int getIni();
 };
 
