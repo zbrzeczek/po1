@@ -4,13 +4,8 @@
 
 #include "Plansza.h"
 
-
-Plansza::Plansza(int width, int height) {
-    for (int i = 0; i < height; i ++){
-        for (int j =0; j < width; j++){
-            planszaOrg[i][j] = nullptr;
-        }
-    }
+void Plansza::addOrgDoPlanszy(int x, int y, Organizm *nowy) {
+    planszaOrg[x][y] = nowy;
 }
 
 Plansza::~Plansza(){

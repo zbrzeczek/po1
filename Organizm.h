@@ -23,6 +23,7 @@ public:
     //virtual void kolizja(Organizm *other);
     virtual void rysowanie();
     //virtual void wyswietlInfo();
+    void mapowanieNaPlanszy();
 
     int getX();
     int getY();

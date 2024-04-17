@@ -10,6 +10,10 @@ void Organizm::akcja() {}
 
 void Organizm::rysowanie() {}
 
+void Organizm::mapowanieNaPlanszy() {
+    swiat->setOrganizmNaPlanszy(int x, int y, this);
+}
+
 int Organizm::getX() {
     return point.x;
 }

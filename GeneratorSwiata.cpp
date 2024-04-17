@@ -7,12 +7,12 @@
 #include "WszystkieOrg.h"
 #include "Stale.h"
 
-Generator_swiata::Generator_swiata(Swiat* swiat)
+GeneratorSwiata::GeneratorSwiata(Swiat* swiat)
 {
     swiat = swiat;
 }
 
-void Generator_swiata::Generuj_swiat()
+void GeneratorSwiata::GenerujSwiat()
 {
     Point point;
 
@@ -34,75 +34,80 @@ void Generator_swiata::Generuj_swiat()
     point.x = width/2;
     point.y = height/2;
 
+    *(wszystkiePola+(height/2 * width) + width/2) = 2;
+
     Organizm* czlowiek = new Czlowiek(point, swiat);
     swiat->addOrganizm(czlowiek);
 
     for (int i = 0; i < iloscTypu; i++)
     {
-        odczytajMiejsceOrg(wszystkiePola, &point, zmiennaSzukania);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* wilk = new Wilk(point, swiat);
         swiat->addOrganizm(wilk);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
-        Organizm* owca = new Owca(x, y, _swiat);
-        _swiat->DodajOrganizm(owca);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
+        Organizm* owca = new Owca(point, swiat);
+        swiat->addOrganizm(owca);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        /*
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* lis = new Lis(x, y, _swiat);
         _swiat->DodajOrganizm(lis);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* zolw = new Zolw(x, y, _swiat);
         _swiat->DodajOrganizm(zolw);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* antylopa = new Antylopa(x, y, _swiat);
         _swiat->DodajOrganizm(antylopa);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* trawa = new Trawa(x, y, _swiat);
         _swiat->DodajOrganizm(trawa);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);;
         Organizm* mlecz = new Mlecz(x, y, _swiat);
         _swiat->DodajOrganizm(mlecz);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* guarana = new Guarana(x, y, _swiat);
         _swiat->DodajOrganizm(guarana);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* jagoda = new Wilcze_jagody(x, y, _swiat);
         _swiat->DodajOrganizm(jagoda);
 
-        OdczytajWspolrzedne(polaZajete, &x, &y, &j);
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* barszcz = new Barszcz_sosnowskiego(x, y, _swiat);
-        _swiat->DodajOrganizm(barszcz);
+        _swiat->DodajOrganizm(barszcz);*/
     }
 }
 
-void Generator_swiata::GenerowanieMapowaniaPktOrg(int * wszystkiePola, int iloscOrg, int height, int width) {
+void GeneratorSwiata::GenerowanieMapowaniaPktOrg(int * wszystkiePola, int iloscOrg, int height, int width) {
     int los;
 
     for (int i = 0; i < height * width; i++){
         *(wszystkiePola+i) = 0;
     }
-    height/2 * width
 
     for (int i = 0; i < iloscOrg; i++){
         do {
             los = rand() % (width * height);
-        } while (*(wszystkiePola+los) == 1);
+        } while (*(wszystkiePola+los) != 0);
         *(wszystkiePola+los) = 1;
     }
 }
 
-void Generator_swiata::odczytajMiejsceOrg(int* wszystkiePola, Point *point, int *zmeinnaSzukania){
-    *x = pola[*ktory] % n;
-    *y = (pola[*ktory] - *x) / n;
-    (*ktory)++;
+void GeneratorSwiata::odczytajMiejsceOrg(int* wszystkiePola, Point *point, int *zmiennaSzukania, int width, int height){
+    int pozycja;
+    while (*(wszystkiePola+*zmiennaSzukania) != 1) *zmiennaSzukania++;
+    pozycja = *zmiennaSzukania;
+    point->x = pozycja % width;
+    point->y = pozycja / height;
+    *zmiennaSzukania++;
 }
 
-Generator_swiata::~Generator_swiata()
-{
+GeneratorSwiata::~GeneratorSwiata() {
     delete swiat;
+}

@@ -1,5 +1,6 @@
 #include <cstdlib>
 
+#include "GeneratorSwiata.h"
 #include "Swiat.h"
 #include "Stale.h"
 
@@ -13,11 +14,13 @@ int main() {
     cout << "Nacisnij klawisz aby zaczac gre" << endl;
     cin >> input;
 
-    Swiat nowySwiat(20, 20);
-
+    Plansza nowaPlansza(20, 20);
+    Swiat nowySwiat(20, 20, &nowaPlansza);
+    GeneratorSwiata generator(&nowySwiat);
+    nowySwiat.rysujSwiat();
 
     while(game){
-        nowySwiat.rysujSwiat();
+        //nowySwiat.rysujSwiat();
         nowySwiat.wykonajTure();
     }
 

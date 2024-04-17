@@ -4,9 +4,9 @@
 
 #include "Swiat.h"
 
-Swiat::Swiat(int width, int height) {
-    width = width;
-    height = height;
+Swiat::Swiat(int width, int height, Plansza *plansza) {
+    this->width = width;
+    this->height = height;
 
     /*
     _liczbaOrgBezNowonarodzonych = 0;
@@ -19,8 +19,7 @@ Swiat::Swiat(int width, int height) {
 
     _organizmy = new Organizm * [_n * _m];*/
 
-    Plansza planszaGry(width, height);
-
+    this->planszaGry = plansza;
 }
 
 int Swiat::getWidth() {
@@ -30,11 +29,14 @@ int Swiat::getHeight() {
     return height;
 }
 
+void Swiat::setOrganizmNaPlanszy(int x, int y, Organizm *organizm) {
+    planszaGry->addOrgDoPlanszy(x, y, organizm);
+}
 void Swiat::addOrganizm(Organizm *nowy) {
     organizmy.push_back(nowy);
 }
 
-void Swiat::nowaGra(int zaludnienie) {
+/*void Swiat::nowaGra(int zaludnienie) {
     //-1 bo czlowiek jest juz jednym deafult organizmem
     int ilosc = getX() * getY() * zaludnienie;
     int iloscDefault = ilosc/10;
@@ -65,28 +67,20 @@ void Swiat::nowaGra(int zaludnienie) {
         addOrganizm(owca, 1);
     }
     cout << "dodano owce" << endl;
-}
+}*/
 
 void Swiat::wykonajTure() {
     //// tutaj musi spawdzqac ta iunicjatywe kto sie pierwszy ruszy ale to pozniej
     for (int i = 0; i < organizmy.size(); i++){
-        for (int j = 0; j < organizmy[i].size(); j++){
-            organizmy[i][j]->akcja();
-        }
+        organizmy[i]->akcja();
     }
 }
 void Swiat::rysujSwiat() {
-    for (int yPole = 0; yPole < getY(); yPole++){
-        for(int xPole = 0; xPole< getX(); xPole++){
-            for (int o = 0; o < organizmy.size(); o++){
-                for(int t = 0; t < organizmy[o].size(); t++) {
-                    if (xPole == organizmy[o][t]->getX() && yPole == organizmy[o][t]->getY()) {
-                        organizmy[o][t]->rysowanie();
-                    }
-                    else std::cout << ' ';
-                }
-            }
-        }
-        std::cout << endl;
+
+    //mapowanie tych organizmow na planszy po turze
+    for (int i = 0; i < organizmy.size(); i++){
+        organizmy[i]->mapowanieNaPlanszy();
     }
+
+
 }

@@ -8,6 +8,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 #include "Organizm.h"
 
 using namespace std;
@@ -15,9 +16,11 @@ using namespace std;
 class Plansza {
 private:
     vector <vector<Organizm*>> planszaOrg;
+    int width, height;
 public:
-    Plansza(int width, int height);
+    Plansza(int width, int height) : height(height), width(width), planszaOrg(height, std::vector<Organizm*>(width, nullptr)) {}
 
+    void addOrgDoPlanszy(int x, int y, Organizm *nowy);
     ~Plansza();
 };
 

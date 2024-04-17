@@ -33,11 +33,12 @@ private:
     Plansza* planszaGry;
 public:
 
-    Swiat(int width, int height);
+    Swiat(int width, int height, Plansza *plansza);
 
     int getWidth();
     int getHeight();
 
+    void setOrganizmNaPlanszy(int x, int y, Organizm *organizm);
     void addOrganizm(Organizm *nowy);
     void wykonajTure();
     void rysujSwiat();

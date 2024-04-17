@@ -8,26 +8,28 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Point.h"
+
 using namespace std;
 
 class Swiat;
 
-class Generator_swiata {
+class GeneratorSwiata {
 private:
     Swiat* swiat;
     //void GenerowaniePunktowDlaOrganizmow(int* pola, int* ileZwZGat);
     //void OdczytajWspolrzedne(int* pola, int* x, int* y, int* ktory);
     //void WczytajOrganizm(string nazwa, int sila, int ini, int x, int y, int wiek);
 public:
-    Generator_swiata(Swiat* swiat);
+    GeneratorSwiata(Swiat* swiat);
 
-    void Generuj_swiat();
+    void GenerujSwiat();
     void GenerowanieMapowaniaPktOrg(int *wszystkiePola, int iloscOrg, int height, int width);
-    void odczytajMiejsceOrg(int* wszystkiePola, Point *point, int * zmiennaSzukania);
+    void odczytajMiejsceOrg(int* wszystkiePola, Point *point, int * zmiennaSzukania, int width, int height);
     //bool Wczytaj_swiat();
     //void Zapisz_swiat();
 
-    ~Generator_swiata();
+    ~GeneratorSwiata();
 };
 
 
