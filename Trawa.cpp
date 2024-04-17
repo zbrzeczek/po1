@@ -7,7 +7,6 @@
 void Trawa::rozprz() {
 
 }
-
-void Trawa::rysowanie() {
-    std::cout << 'T';
+char Trawa::symbolOrg() {
+    return 't';
 }

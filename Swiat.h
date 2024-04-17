@@ -10,11 +10,7 @@
 #include <vector>
 
 #include "Plansza.h"
-#include "Czlowiek.h"
-#include "Wilk.h"
-#include "Owca.h"
-#include "Zolw.h"
-#include "Antylopa.h"
+#include "WszystkieOrg.h"
 
 /*//zwierzeta sa od najwiekszej inicjatywy
 #define STADO_LISOW 0
@@ -38,8 +34,8 @@ public:
     int getWidth();
     int getHeight();
     Plansza* getPlansza();
+    Organizm* getPolePlanszy(int x, int y);
 
-    void setOrganizmNaPlanszy(int x, int y, Organizm *organizm);
     void addOrganizm(Organizm *nowy);
     void wykonajTure();
     void rysujSwiat();

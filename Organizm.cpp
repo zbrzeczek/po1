@@ -2,20 +2,21 @@
 // Created by Zuzanna Brzęczek on 20/03/2024.
 //
 
+#include "Swiat.h"
 #include "Organizm.h"
 
 void Organizm::akcja() {}
 
 //void Organizm::kolizja(Organizm *other) {}
 
-void Organizm::rysowanie() {}
-
-void Organizm::setOrganizmNaPlanszy(int x, int y, Plansza *plansza) {
-    plansza->addOrgDoPlanszy(x, y, this);
-    //plansza
-    //swiat.setOrganizmNaPlanszy(int x, int y, this);
+void Organizm::rysowanie() {
+    Plansza *plansza = swiat->getPlansza();
+    plansza->addOrgDoPlanszy(point.x, point.y, this);
 }
 
+char Organizm::symbolOrg() {
+
+}
 int Organizm::getX() {
     return point.x;
 }

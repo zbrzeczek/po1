@@ -34,8 +34,8 @@ void Czlowiek::ruch() {
 
 //}
 
-void Czlowiek::rysowanie() {
-    cout << 'X';
+char Czlowiek::symbolOrg() {
+    return 'C';
 }
 
 //void Czlowiek::wyswietlInfo() {

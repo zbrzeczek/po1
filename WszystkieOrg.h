@@ -5,12 +5,13 @@
 #ifndef PO1_WSZYSTKIEORG_H
 #define PO1_WSZYSTKIEORG_H
 
-#include "Antylopa.h"
 #include "Czlowiek.h"
+
 #include "Owca.h"
-#include "Trawa.h"
 #include "Wilk.h"
+/*#include "Antylopa.h"
 #include "Zolw.h"
 
-
+#include "Trawa.h"
+*/
 #endif //PO1_WSZYSTKIEORG_H

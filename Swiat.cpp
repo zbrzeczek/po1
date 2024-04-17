@@ -28,14 +28,17 @@ int Swiat::getWidth() {
 int Swiat::getHeight() {
     return height;
 }
-
 Plansza *Swiat::getPlansza() {
     return planszaGry;
 }
 
-void Swiat::setOrganizmNaPlanszy(int x, int y, Organizm *organizm) {
-    planszaGry->addOrgDoPlanszy(x, y, organizm);
+Organizm *Swiat::getPolePlanszy(int x, int y) {
+    if ((x > 0) && (x < (width + 2)) && (y > 0) && (y < (height + 2))){
+        return planszaGry->getOrganizmZPlanszy(x, y);
+    }
+    return nullptr;
 }
+
 void Swiat::addOrganizm(Organizm *nowy) {
     organizmy.push_back(nowy);
 }
@@ -82,6 +85,24 @@ void Swiat::wykonajTure() {
 void Swiat::rysujSwiat() {
     //mapowanie tych organizmow na planszy po turze
     for (int i = 0; i < organizmy.size(); i++){
-        organizmy[i]->mapowanieNaPlanszy(planszaGry);
+        organizmy[i]->rysowanie();
     }
+
+    for (int y = 0; y < (height + 2); y++){
+        for (int x = 0; x < (width + 2); x++){
+            if (getPolePlanszy(x, y) == nullptr){
+                if ((x == 0) || (y == 0) || (x == width + 1) || (y == height + 1)) cout << '#';
+                else cout << ' ';
+            }
+            else{
+                cout << "tu doszlo" << endl;
+                cout << getPolePlanszy(x, y)->symbolOrg();
+                cout << "tu nie " << endl;
+            }
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+
 }

@@ -9,6 +9,6 @@ void Wilk::ruch() {
 
 }
 
-void Wilk::rysowanie() {
-    std::cout << 'W';
+char Wilk::symbolOrg() {
+    return 'W';
 }

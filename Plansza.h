@@ -20,7 +20,9 @@ private:
 public:
     Plansza(int width, int height) : height(height), width(width), planszaOrg(height, std::vector<Organizm*>(width, nullptr)) {}
 
+    Organizm * getOrganizmZPlanszy(int x, int y);
     void addOrgDoPlanszy(int x, int y, Organizm *nowy);
+
     ~Plansza();
 };
 

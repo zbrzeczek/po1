@@ -16,7 +16,7 @@ public:
     //virtual void rozmnazanie();
     virtual void ruch();
 
-    void rysowanie() override;
+    char symbolOrg() override;
 
     void akcja() override {
         ruch();

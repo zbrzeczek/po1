@@ -13,7 +13,7 @@ public:
 
     virtual void rozprz();
 
-    void rysowanie() override;
+    char symbolOrg() override;
 
     void akcja() override {
         rozprz();

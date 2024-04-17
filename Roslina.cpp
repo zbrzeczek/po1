@@ -8,6 +8,5 @@ void Roslina::rozprz() {
 
 }
 
-void Roslina::rysowanie() {
-
+char Roslina::symbolOrg() {
 }

@@ -8,6 +8,6 @@ void Zwierze::ruch() {
 
 }
 
-void Zwierze::rysowanie() {
+char Zwierze::symbolOrg() {
 
 }

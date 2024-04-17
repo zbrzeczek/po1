@@ -19,7 +19,7 @@ public:
     void ruch() override;
     //void rozmnazanie() override;
 
-    void rysowanie() override;
+    char symbolOrg() override;
     //void wyswietlInfo() override;
 
 };

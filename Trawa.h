@@ -13,7 +13,7 @@ public:
 
     void rozprz() override;
 
-    void rysowanie() override;
+    char symbolOrg() override;
 };
 
 

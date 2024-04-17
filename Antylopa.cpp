@@ -7,7 +7,6 @@
 void Antylopa::ruch() {
 
 }
-
-void Antylopa::rysowanie() {
-    std::cout << 'A';
+char Antylopa::symbolOrg() {
+    return 'A';
 }

@@ -7,6 +7,6 @@
 void Zolw::ruch() {
 
 }
-void Zolw::rysowanie() {
-    std::cout << 'Z';
+char Zolw::symbolOrg() {
+    return 'Z';
 }

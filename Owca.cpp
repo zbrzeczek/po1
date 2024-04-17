@@ -6,6 +6,6 @@
 
 void Owca::ruch() {}
 
-void Owca::rysowanie() {
-    std::cout << 'O';
+char Owca::symbolOrg() {
+    return 'O';
 }

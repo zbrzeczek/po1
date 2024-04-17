@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include "Point.h"
-#include "Plansza.h"
 
 class Swiat;
 
@@ -22,9 +21,10 @@ public:
 
     virtual void akcja();
     //virtual void kolizja(Organizm *other);
-    virtual void rysowanie();
+    void rysowanie();
+
+    virtual char symbolOrg();
     //virtual void wyswietlInfo();
-    void setOrganizmNaPlanszy(int x, int y, Plansza *plansza);
 
     int getX();
     int getY();
