@@ -37,6 +37,7 @@ public:
 
     int getWidth();
     int getHeight();
+    Plansza* getPlansza();
 
     void setOrganizmNaPlanszy(int x, int y, Organizm *organizm);
     void addOrganizm(Organizm *nowy);

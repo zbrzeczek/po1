@@ -29,6 +29,10 @@ int Swiat::getHeight() {
     return height;
 }
 
+Plansza *Swiat::getPlansza() {
+    return planszaGry;
+}
+
 void Swiat::setOrganizmNaPlanszy(int x, int y, Organizm *organizm) {
     planszaGry->addOrgDoPlanszy(x, y, organizm);
 }
@@ -76,11 +80,8 @@ void Swiat::wykonajTure() {
     }
 }
 void Swiat::rysujSwiat() {
-
     //mapowanie tych organizmow na planszy po turze
     for (int i = 0; i < organizmy.size(); i++){
-        organizmy[i]->mapowanieNaPlanszy();
+        organizmy[i]->mapowanieNaPlanszy(planszaGry);
     }
-
-
 }

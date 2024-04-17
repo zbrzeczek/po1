@@ -39,8 +39,7 @@ void GeneratorSwiata::GenerujSwiat()
     Organizm* czlowiek = new Czlowiek(point, swiat);
     swiat->addOrganizm(czlowiek);
 
-    for (int i = 0; i < iloscTypu; i++)
-    {
+    for (int i = 0; i < iloscTypu; i++){
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* wilk = new Wilk(point, swiat);
         swiat->addOrganizm(wilk);
