@@ -11,7 +11,6 @@ class Zolw : public Zwierze{
 public:
     Zolw(Point point, Swiat* swiat) : Zwierze(2, 1, point, swiat) {}
 
-    void ruch() override;
     //void rozmnazanie() override;
 
     char symbolOrg() override;

@@ -9,9 +9,10 @@
 
 #include "Owca.h"
 #include "Wilk.h"
-/*#include "Antylopa.h"
+#include "Lis.h"
 #include "Zolw.h"
-
+#include "Antylopa.h"
+/*
 #include "Trawa.h"
 */
 #endif //PO1_WSZYSTKIEORG_H

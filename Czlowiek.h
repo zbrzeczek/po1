@@ -14,8 +14,6 @@ class Czlowiek : public Zwierze {
 public:
     Czlowiek(Point point, Swiat* swiat) : Zwierze(5, 4, point, swiat) {}
 
-    void changePos(int yAdd, int xAdd);
-
     void ruch() override;
     //void rozmnazanie() override;
 

@@ -9,7 +9,7 @@ Organizm *Plansza::getOrganizmZPlanszy(int x, int y) {
 }
 
 void Plansza::addOrgDoPlanszy(int x, int y, Organizm *nowy) {
-    planszaOrg[x][y] = nowy;
+    planszaOrg[y][x] = nowy;
 }
 
 Plansza::~Plansza(){

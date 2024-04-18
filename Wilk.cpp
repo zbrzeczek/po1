@@ -5,10 +5,6 @@
 #include "Wilk.h"
 
 
-void Wilk::ruch() {
-
-}
-
-char Wilk::symbolOrg() {
+char Wilk::symbolOrg(){
     return 'W';
 }

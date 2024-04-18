@@ -7,11 +7,10 @@
 
 void Organizm::akcja() {}
 
-//void Organizm::kolizja(Organizm *other) {}
+void Organizm::kolizja(Organizm *other) {}
 
 void Organizm::rysowanie() {
-    Plansza *plansza = swiat->getPlansza();
-    plansza->addOrgDoPlanszy(point.x, point.y, this);
+    swiat->getPlansza()->addOrgDoPlanszy(point.x, point.y, this);
 }
 
 char Organizm::symbolOrg() {
@@ -28,4 +27,17 @@ int Organizm::getY() {
 }*/
 int Organizm::getIni() {
     return inicjatywa;
+}
+
+int Organizm::getWiek() {
+    return wiek;
+}
+
+int Organizm::walidacjaRuchu(int x, int y) {
+    if (point.x + x < swiat->getWidth() && point.x + x > 0 &&  point.y + y < swiat->getHeight() && point.y + y> 0) return TRUE;
+    else return FALSE;
+}
+
+void Organizm::starszyWiek() {
+    wiek++;
 }

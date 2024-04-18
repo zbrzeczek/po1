@@ -7,20 +7,23 @@
 
 #include <iostream>
 #include "Point.h"
+#include "Stale.h"
 
 class Swiat;
 
 class Organizm {
 private:
     int inicjatywa;
+    int wiek;
     Swiat *swiat;
 protected:
     Point point;
 public:
-    Organizm(int ini, Point point, Swiat *swiat) : inicjatywa(ini), point(point), swiat(swiat) {}
+    Organizm(int ini, Point point, Swiat *swiat) : wiek(0), inicjatywa(ini), point(point), swiat(swiat) {}
 
     virtual void akcja();
-    //virtual void kolizja(Organizm *other);
+    virtual void kolizja(Organizm *other);
+
     void rysowanie();
 
     virtual char symbolOrg();
@@ -29,6 +32,11 @@ public:
     int getX();
     int getY();
     int getIni();
+    int getWiek();
+
+    int walidacjaRuchu(int x, int y);
+    void starszyWiek();
+
 };
 
 

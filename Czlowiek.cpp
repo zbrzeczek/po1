@@ -4,14 +4,10 @@
 
 #include "Czlowiek.h"
 
-void Czlowiek::changePos(int yAdd, int xAdd) {
-    point.x += xAdd;
-    point.y += yAdd;
-}
-
 void Czlowiek::ruch() {
     char ch;
     cin >> ch;
+
     switch (ch) {
         case 'w':
             changePos(-1,0);

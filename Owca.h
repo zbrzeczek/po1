@@ -11,7 +11,6 @@ class Owca : public Zwierze{
 public:
     Owca(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
-    void ruch() override;
     //void rozmnazanie() override;
 
     char symbolOrg() override;

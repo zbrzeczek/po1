@@ -16,14 +16,12 @@ public:
     //virtual void rozmnazanie();
     virtual void ruch();
 
+
+    void changePos(int y, int x);
     char symbolOrg() override;
 
-    void akcja() override {
-        ruch();
-    }
-    //void kolizja(Organizm *other) override {
-        //rozmnazanie();
-    //}
+    void akcja() override;
+    void kolizja(Organizm *other) override;
 
 };
 

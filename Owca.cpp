@@ -4,8 +4,6 @@
 
 #include "Owca.h"
 
-void Owca::ruch() {}
-
 char Owca::symbolOrg() {
     return 'O';
 }

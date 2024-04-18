@@ -9,7 +9,7 @@
 
 GeneratorSwiata::GeneratorSwiata(Swiat* swiat)
 {
-    swiat = swiat;
+    this->swiat = swiat;
 }
 
 void GeneratorSwiata::GenerujSwiat()
@@ -22,13 +22,12 @@ void GeneratorSwiata::GenerujSwiat()
 
     height = swiat->getHeight();
     width = swiat->getWidth();
-    iloscOrgLacznie = height * width * DEFAULT_ZAL;
-    iloscTypu = iloscOrgLacznie/10;
+    iloscOrgLacznie = height * POLOWA * width * POLOWA * DEFAULT_ZAL;
+    iloscTypu = iloscOrgLacznie/5;
 
 
     int* wszystkiePola = new int[height * width];
 
-    //+1 bo czlowiek
     this->GenerowanieMapowaniaPktOrg(wszystkiePola, iloscOrgLacznie, height, width);
 
     point.x = width/2;
@@ -48,19 +47,19 @@ void GeneratorSwiata::GenerujSwiat()
         Organizm* owca = new Owca(point, swiat);
         swiat->addOrganizm(owca);
 
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
+        Organizm* lis = new Lis(point, swiat);
+        swiat->addOrganizm(lis);
+
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
+        Organizm* zolw = new Zolw(point, swiat);
+        swiat->addOrganizm(zolw);
+
+        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
+        Organizm* antylopa = new Antylopa(point, swiat);
+        swiat->addOrganizm(antylopa);
+
         /*
-        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* lis = new Lis(x, y, _swiat);
-        _swiat->DodajOrganizm(lis);
-
-        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* zolw = new Zolw(x, y, _swiat);
-        _swiat->DodajOrganizm(zolw);
-
-        odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* antylopa = new Antylopa(x, y, _swiat);
-        _swiat->DodajOrganizm(antylopa);
-
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
         Organizm* trawa = new Trawa(x, y, _swiat);
         _swiat->DodajOrganizm(trawa);
@@ -100,11 +99,11 @@ void GeneratorSwiata::GenerowanieMapowaniaPktOrg(int * wszystkiePola, int iloscO
 
 void GeneratorSwiata::odczytajMiejsceOrg(int* wszystkiePola, Point *point, int *zmiennaSzukania, int width, int height){
     int pozycja;
-    while (*(wszystkiePola+*zmiennaSzukania) != 1) *zmiennaSzukania++;
+    while (*(wszystkiePola+ *zmiennaSzukania) != 1) (*zmiennaSzukania)++;
     pozycja = *zmiennaSzukania;
     point->x = pozycja % width;
     point->y = pozycja / height;
-    *zmiennaSzukania++;
+    (*zmiennaSzukania)++;
 }
 
 GeneratorSwiata::~GeneratorSwiata() {

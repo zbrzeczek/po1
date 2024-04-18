@@ -4,9 +4,6 @@
 
 #include "Antylopa.h"
 
-void Antylopa::ruch() {
-
-}
 char Antylopa::symbolOrg() {
     return 'A';
 }

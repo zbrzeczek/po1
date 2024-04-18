@@ -8,14 +8,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
 
 #include "Plansza.h"
 #include "WszystkieOrg.h"
-
-/*//zwierzeta sa od najwiekszej inicjatywy
-#define STADO_LISOW 0
-#define STADO_WILKOW 1
-#define */
+#include "Stale.h"
 
 using  namespace std;
 
@@ -23,20 +20,26 @@ class Organizm;
 
 class Swiat {
 private:
-    int width, height;
+    int width, height, liczbaOrg;
     //aha tu nwm co bo rosliny nie maja ini i sie nie ruszaja
     vector<Organizm *> organizmy;
     Plansza* planszaGry;
+    int czyGameOver;
+protected:
+    //vector od najmniejszej inicjatywy do najwiekszej
+    vector<Organizm *> kolejkaAkcji;
 public:
 
     Swiat(int width, int height, Plansza *plansza);
 
     int getWidth();
     int getHeight();
+    int getGameOver();
     Plansza* getPlansza();
     Organizm* getPolePlanszy(int x, int y);
-
     void addOrganizm(Organizm *nowy);
+
+    void sortKolejkeAkcji();
     void wykonajTure();
     void rysujSwiat();
 

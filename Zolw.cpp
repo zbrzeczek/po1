@@ -4,9 +4,6 @@
 
 #include "Zolw.h"
 
-void Zolw::ruch() {
-
-}
 char Zolw::symbolOrg() {
     return 'Z';
 }

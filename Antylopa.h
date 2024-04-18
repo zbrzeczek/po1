@@ -9,9 +9,8 @@
 
 class Antylopa : public Zwierze{
 public:
-    Antylopa(Point point, Swiat* swiat) : Zwierze(2, 1, point, swiat) {}
+    Antylopa(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
-    void ruch() override;
     //void rozmnazanie() override;
 
     char symbolOrg() override;

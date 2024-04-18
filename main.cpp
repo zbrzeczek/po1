@@ -17,11 +17,12 @@ int main() {
     Plansza nowaPlansza(20, 20);
     Swiat nowySwiat(20, 20, &nowaPlansza);
     GeneratorSwiata generator(&nowySwiat);
+    generator.GenerujSwiat();
     nowySwiat.rysujSwiat();
 
-    while(game){
-        //nowySwiat.rysujSwiat();
+    while(!nowySwiat.getGameOver()){
         nowySwiat.wykonajTure();
+        nowySwiat.rysujSwiat();
     }
 
     return 0;
