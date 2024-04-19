@@ -22,6 +22,7 @@ public:
 
     Organizm * getOrganizmZPlanszy(int x, int y);
     void addOrgDoPlanszy(int x, int y, Organizm *nowy);
+    void wyczyscPlansze();
 
     ~Plansza();
 };

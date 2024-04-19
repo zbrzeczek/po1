@@ -16,23 +16,25 @@ private:
     int inicjatywa;
     int wiek;
     Swiat *swiat;
+    int czyZwierze;
 protected:
     Point point;
 public:
-    Organizm(int ini, Point point, Swiat *swiat) : wiek(0), inicjatywa(ini), point(point), swiat(swiat) {}
+    Organizm(int ini, Point point, Swiat *swiat, int czyZwierze) : czyZwierze(czyZwierze), wiek(0), inicjatywa(ini), point(point), swiat(swiat) {}
 
     virtual void akcja();
-    virtual void kolizja(Organizm *other);
 
     void rysowanie();
 
     virtual char symbolOrg();
+    int kolizja(Organizm *other);
     //virtual void wyswietlInfo();
 
     int getX();
     int getY();
     int getIni();
     int getWiek();
+    Swiat *getSwiat();
 
     int walidacjaRuchu(int x, int y);
     void starszyWiek();

@@ -11,17 +11,16 @@ class Zwierze : public Organizm {
 private:
     int sila;
 public:
-    Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(ini, point, swiat), sila(sila) {}
+    Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(ini, point, swiat, TRUE), sila(sila) {}
 
     //virtual void rozmnazanie();
     virtual void ruch();
-
+    int getSila();
 
     void changePos(int y, int x);
     char symbolOrg() override;
 
     void akcja() override;
-    void kolizja(Organizm *other) override;
 
 };
 

@@ -12,6 +12,14 @@ void Plansza::addOrgDoPlanszy(int x, int y, Organizm *nowy) {
     planszaOrg[y][x] = nowy;
 }
 
+void Plansza::wyczyscPlansze() {
+    for (int i = 0; i < height; i++){
+        for (int j = 0; j < width; j++){
+            planszaOrg[i][j] = nullptr;
+        }
+    }
+}
+
 Plansza::~Plansza(){
 
 }

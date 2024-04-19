@@ -9,7 +9,7 @@
 
 class Roslina : public Organizm {
 public:
-    Roslina(int sila, Point point, Swiat *swiat) : Organizm(sila, point, swiat) {}
+    Roslina(int sila, Point point, Swiat *swiat) : Organizm(sila, point, swiat, FALSE) {}
 
     virtual void rozprz();
 

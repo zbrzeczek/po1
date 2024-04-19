@@ -57,6 +57,12 @@ void Swiat::addOrganizm(Organizm *nowy) {
     organizmy.push_back(nowy);
 }
 
+void Swiat::delOrganizm(Organizm *del) {
+    organizmy.erase(remove_if(organizmy.begin(), organizmy.end(),
+                                   [del](Organizm* org) { return org == del; }),
+                    organizmy.end());
+}
+
 void Swiat::wykonajTure() {
     sortKolejkeAkcji();
 
@@ -74,6 +80,8 @@ void Swiat::wykonajTure() {
     }
 }
 void Swiat::rysujSwiat() {
+    planszaGry->wyczyscPlansze();
+
     //mapowanie tych organizmow na planszy po turze
     for (int i = 0; i < organizmy.size(); i++){
         organizmy[i]->rysowanie();

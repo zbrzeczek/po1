@@ -13,6 +13,8 @@
 #define GORA 1
 #define PRAWO 2
 #define DOL 3
+#define POLE_PUSTE 1
+#define KOLIZJA 2
 
 
 #endif //PO1_STALE_H

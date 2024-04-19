@@ -38,6 +38,7 @@ public:
     Plansza* getPlansza();
     Organizm* getPolePlanszy(int x, int y);
     void addOrganizm(Organizm *nowy);
+    void delOrganizm(Organizm* del);
 
     void sortKolejkeAkcji();
     void wykonajTure();
