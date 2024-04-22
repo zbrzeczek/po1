@@ -16,10 +16,8 @@ char Organizm::symbolOrg() {
 }
 
 void Organizm::kolizja(Organizm *other) {
-    if (other->czyZwierze){
-        Zwierze *zmienna = dynamic_cast<Zwierze*>(other);
-        Zwierze *zmienna2 = dynamic_cast<Zwierze*>(this);
-        if (zmienna->getSila() < zmienna2->getSila() || (zmienna->getSila() == zmienna2->getSila() && zmienna->getWiek() < zmienna2->getWiek())){
+    if (other->getCzyZwierze() && this->getCzyZwierze()){
+        if (other->getSila() < this->getSila() || (other->getSila() == this->getSila() && other->getWiek() < this->getWiek())){
             cout << this->getNazwe() << " zabija " << other->getNazwe();
             swiat->delOrganizm(other);
         }
@@ -36,8 +34,8 @@ int Organizm::getX() {
 int Organizm::getY() {
     return point.y;
 }
-int Organizm::getIni() {
-    return inicjatywa;
+int Organizm::getSila() {
+    return sila;
 }
 
 int Organizm::getWiek() {

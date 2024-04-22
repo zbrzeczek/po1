@@ -13,14 +13,14 @@ class Swiat;
 
 class Organizm {
 private:
-    int inicjatywa;
+    int sila;
     int wiek;
     Swiat *swiat;
     int czyZwierze;
 protected:
     Point point;
 public:
-    Organizm(int ini, Point point, Swiat *swiat, int czyZwierze) : czyZwierze(czyZwierze), wiek(0), inicjatywa(ini), point(point), swiat(swiat) {}
+    Organizm(int sila, Point point, Swiat *swiat, int czyZwierze) : czyZwierze(czyZwierze), wiek(0), sila(sila), point(point), swiat(swiat) {}
 
     virtual void akcja();
 
@@ -32,7 +32,7 @@ public:
 
     int getX();
     int getY();
-    int getIni();
+    int getSila();
     int getWiek();
     int getCzyZwierze();
     virtual string getNazwe();

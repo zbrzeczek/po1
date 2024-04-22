@@ -4,6 +4,9 @@
 
 #include "Roslina.h"
 
+void Roslina::akcja() {
+    rozprz();
+}
 string Roslina::getNazwe() {
     return " ";
 }

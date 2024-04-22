@@ -16,9 +16,7 @@ public:
 
     char symbolOrg() override;
 
-    void akcja() override {
-        rozprz();
-    }
+    void akcja() override;
 };
 
 

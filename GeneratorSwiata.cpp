@@ -23,7 +23,7 @@ void GeneratorSwiata::GenerujSwiat()
     height = swiat->getHeight();
     width = swiat->getWidth();
     iloscOrgLacznie = height * POLOWA * width * POLOWA * DEFAULT_ZAL;
-    iloscTypu = iloscOrgLacznie/7;
+    iloscTypu = iloscOrgLacznie/10;
 
 
     int* wszystkiePola = new int[height * width];

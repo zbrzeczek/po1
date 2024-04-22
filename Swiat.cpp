@@ -49,15 +49,21 @@ void Swiat::addKom(string kom) {
 
 void Swiat::sortKolejkeAkcji() {
     sort(organizmy.begin(), organizmy.end(), [](Organizm *a, Organizm *b){
-        if (b->getIni() != a->getIni()) {
-            return b->getIni() > a->getIni(); // Sort by inicjatywa in descending order
-        } else {
-            return b->getWiek() > a->getWiek(); // If inicjatywa is the same, sort by wiek in descending order
+        if (a->getCzyZwierze() && b->getCzyZwierze()) {
+            Zwierze *aVar = dynamic_cast<Zwierze*>(a);
+            Zwierze *bVar = dynamic_cast<Zwierze*>(b);
+            if (bVar->getIni() != aVar->getIni()) {
+                return bVar->getIni() > aVar->getIni(); // Sort by inicjatywa in descending order
+            } else {
+                return bVar->getWiek() > aVar->getWiek(); // If inicjatywa is the same, sort by wiek in descending order
+            }
         }
+        else if (a->getCzyZwierze()) return false;
+        else if (b->getCzyZwierze()) return true;
     });
 
     for (Organizm *org : organizmy) {
-        kolejkaAkcji.push_back(org);
+        if(org->getCzyZwierze() == TRUE) kolejkaAkcji.push_back(org);
     }
 }
 
