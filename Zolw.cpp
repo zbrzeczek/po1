@@ -11,14 +11,14 @@ string Zolw::getNazwe() {
 
 void Zolw::ruch() {
     int czyRuszy = 0;
-    int los;
-    int x = point.x;
-    int y = point.y;
+    int los, x, y;
     int losowanie = TRUE;
 
     czyRuszy = rand() % 4;
     if (!czyRuszy) {
         while (losowanie) {
+            x = getX();
+            y = getY();
             los = rand() % 4;
 
             losowanie = FALSE;
@@ -39,9 +39,10 @@ void Zolw::ruch() {
                     break;
             }
 
-            if (walidacjaRuchu(x, y) == POLE_PUSTE) changePos(y, x);
-            else if (walidacjaRuchu(x, y) == KOLIZJA) {
-                kolizja(getSwiat()->getPolePlanszy(x, y));
+            int walidacja = walidacjaRuchu(y, x);
+            if (walidacja == POLE_PUSTE) changePos(y, x);
+            else if (walidacja == KOLIZJA) {
+                kolizja(getSwiat()->getPolePlanszy(y, x));
                 changePos(y, x);
             } else losowanie = TRUE;
         }

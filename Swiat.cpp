@@ -36,9 +36,9 @@ Plansza *Swiat::getPlansza() {
 int Swiat::getGameOver() {
     return czyGameOver;
 }
-Organizm *Swiat::getPolePlanszy(int x, int y) {
+Organizm *Swiat::getPolePlanszy(int y, int x) {
     if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight()){
-        return planszaGry->getOrganizmZPlanszy(x, y);
+        return planszaGry->getOrganizmZPlanszy(y, x);
     }
     return nullptr;
 }
@@ -53,18 +53,19 @@ void Swiat::sortKolejkeAkcji() {
             Zwierze *aVar = dynamic_cast<Zwierze*>(a);
             Zwierze *bVar = dynamic_cast<Zwierze*>(b);
             if (bVar->getIni() != aVar->getIni()) {
-                return bVar->getIni() > aVar->getIni(); // Sort by inicjatywa in descending order
+                return aVar->getIni() > bVar->getIni(); // Sort by initiative in descending order
             } else {
-                return bVar->getWiek() > aVar->getWiek(); // If inicjatywa is the same, sort by wiek in descending order
+                return aVar->getWiek() > bVar->getWiek(); // If initiative is the same, sort by age in descending order
             }
         }
-        else if (b != nullptr && b->getCzyZwierze()) return true;
-        else return false;
+        else if (b == nullptr || !b->getCzyZwierze()) return false;
+        else return true;
     });
 
     for (Organizm *org : organizmy) {
         if(org->getCzyZwierze() == TRUE) kolejkaAkcji.push_back(org);
     }
+
 }
 
 void Swiat::addOrganizm(Organizm *nowy) {
@@ -73,6 +74,8 @@ void Swiat::addOrganizm(Organizm *nowy) {
 }
 
 void Swiat::delOrganizm(Organizm *del) {
+    Czlowiek *zmienna = dynamic_cast<Czlowiek*>(del);
+    if (zmienna) czyGameOver = TRUE;
     organizmy.erase(remove_if(organizmy.begin(), organizmy.end(),
                                    [del](Organizm* org) { return org == del; }),
                     organizmy.end());
@@ -85,15 +88,18 @@ void Swiat::delOrganizm(Organizm *del) {
 
 void Swiat::wykonajTure() {
     sortKolejkeAkcji();
-
+    int i =0;
     //// tutaj musi spawdzqac ta iunicjatywe kto sie pierwszy ruszy ale to pozniej
-    for (int i = kolejkaAkcji.size(); i > 0; i--){
-        kolejkaAkcji[i-1]->akcja();
+    while (i < kolejkaAkcji.size()){
+        kolejkaAkcji[i]->akcja();
+        i++;
+    }
+    for (int j = 0; j < kolejkaAkcji.size(); j++){
         kolejkaAkcji.pop_back();
     }
 
-    for (int i = 0; i < liczbaOrg; i++){
-        organizmy[i]->starszyWiek();
+    for (int x = 0; x < liczbaOrg; x++){
+        organizmy[x]->starszyWiek();
     }
 }
 void Swiat::rysujSwiat() {
@@ -108,9 +114,9 @@ void Swiat::rysujSwiat() {
         for (int x = 0; x < (width + 2); x++){
             if ((x == 0) || (y == 0) || (x == width + 1) || (y == height + 1)) cout << '#';
             else {
-                if (getPolePlanszy(x-1, y-1) == nullptr) cout << ' ';
+                if (getPolePlanszy(y-1, x-1) == nullptr) cout << ' ';
                 else {
-                    cout << getPolePlanszy(x-1, y-1)->symbolOrg();
+                    cout << getPolePlanszy(y-1, x-1)->symbolOrg();
                 }
             }
         }

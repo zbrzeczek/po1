@@ -11,11 +11,12 @@ string Czlowiek::getNazwe() {
 
 void Czlowiek::ruch() {
     char ch;
-    int x = point.x;
-    int y = point.y;
+    int x, y;
     int wybieranie = TRUE;
 
     while (wybieranie) {
+        x = getX();
+        y = getY();
         wybieranie = FALSE;
         cin >> ch;
 
@@ -36,9 +37,9 @@ void Czlowiek::ruch() {
                 break;
         }
 
-        if (walidacjaRuchu(x, y) == POLE_PUSTE) changePos(y, x);
-        else if (walidacjaRuchu(x, y) == KOLIZJA) {
-            kolizja(getSwiat()->getPolePlanszy(x, y));
+        if (walidacjaRuchu(y, x) == POLE_PUSTE) changePos(y, x);
+        else if (walidacjaRuchu(y, x) == KOLIZJA) {
+            kolizja(getSwiat()->getPolePlanszy(y, x));
             changePos(y, x);
         }
         else wybieranie = TRUE;

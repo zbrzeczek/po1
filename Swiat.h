@@ -38,7 +38,7 @@ public:
     int getHeight();
     int getGameOver();
     Plansza* getPlansza();
-    Organizm* getPolePlanszy(int x, int y);
+    Organizm* getPolePlanszy(int y, int x);
     void addKom(string kom);
 
     void addOrganizm(Organizm *nowy);

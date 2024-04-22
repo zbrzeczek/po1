@@ -4,11 +4,11 @@
 
 #include "Plansza.h"
 
-Organizm *Plansza::getOrganizmZPlanszy(int x, int y) {
+Organizm *Plansza::getOrganizmZPlanszy(int y, int x) {
     return planszaOrg[y][x];
 }
 
-void Plansza::addOrgDoPlanszy(int x, int y, Organizm *nowy) {
+void Plansza::addOrgDoPlanszy(int y, int x, Organizm *nowy) {
     planszaOrg[y][x] = nowy;
 }
 
