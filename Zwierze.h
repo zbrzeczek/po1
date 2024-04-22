@@ -18,7 +18,6 @@ public:
     virtual void ruch();
     int getIni();
 
-    void changePos(int y, int x);
     char symbolOrg() override;
 
     void akcja() override;

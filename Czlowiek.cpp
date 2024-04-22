@@ -37,12 +37,7 @@ void Czlowiek::ruch() {
                 break;
         }
 
-        if (walidacjaRuchu(y, x) == POLE_PUSTE) changePos(y, x);
-        else if (walidacjaRuchu(y, x) == KOLIZJA) {
-            kolizja(getSwiat()->getPolePlanszy(y, x));
-            changePos(y, x);
-        }
-        else wybieranie = TRUE;
+        wybieranie = ruchWalidacja(y, x);
     }
 }
 

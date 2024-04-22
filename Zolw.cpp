@@ -39,12 +39,7 @@ void Zolw::ruch() {
                     break;
             }
 
-            int walidacja = walidacjaRuchu(y, x);
-            if (walidacja == POLE_PUSTE) changePos(y, x);
-            else if (walidacja == KOLIZJA) {
-                kolizja(getSwiat()->getPolePlanszy(y, x));
-                changePos(y, x);
-            } else losowanie = TRUE;
+            losowanie = ruchWalidacja(y, x);
         }
     }
 }

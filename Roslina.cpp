@@ -2,6 +2,7 @@
 // Created by Zuzanna Brzęczek on 20/03/2024.
 //
 
+#include "Swiat.h"
 #include "Roslina.h"
 
 void Roslina::akcja() {
@@ -10,6 +11,7 @@ void Roslina::akcja() {
 string Roslina::getNazwe() {
     return " ";
 }
+
 void Roslina::rozprz() {
 
 }

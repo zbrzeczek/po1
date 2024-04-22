@@ -37,10 +37,15 @@ public:
     int getWiek();
     int getCzyZwierze();
     virtual string getNazwe();
+
     string getPoint();
     Swiat *getSwiat();
 
-    int walidacjaRuchu(int y, int x);
+    bool teSameOrg(Organizm *drugi);
+    bool taSamaPozycja(Organizm *drugi);
+    int ruchWalidacja(int y, int x);
+    void changePos(int y, int x);
+
     void starszyWiek();
 
 };
