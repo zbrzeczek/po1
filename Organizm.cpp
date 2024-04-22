@@ -16,15 +16,32 @@ char Organizm::symbolOrg() {
 }
 
 void Organizm::kolizja(Organizm *other) {
+    string kom;
     if (other->getCzyZwierze() && this->getCzyZwierze()){
         if (other->getSila() < this->getSila() || (other->getSila() == this->getSila() && other->getWiek() < this->getWiek())){
-            cout << this->getNazwe() << " zabija " << other->getNazwe();
+            kom = this->getNazwe() + " zabija " + other->getNazwe();
             swiat->delOrganizm(other);
         }
         else {
-            cout << other->getNazwe() << " zabija " << this->getNazwe();
+            kom = other->getNazwe() + " zabija " + this->getNazwe();
             swiat->delOrganizm(this);
         }
+        this->getSwiat()->addKom(kom);
+    }
+    else{
+        Roslina *zmienna = dynamic_cast<Roslina*>(other);
+        kom = this->getNazwe() + " zjada " + other->getNazwe();
+        if (zmienna->getSila() > 0) {
+            kom += " oraz ginie";
+            swiat->delOrganizm(this);
+        }
+        else {
+            Guarana *zmiennaGua = dynamic_cast<Guarana*>(zmienna);
+            if (zmiennaGua){
+                this->setSila(3);
+            }
+        }
+        swiat->delOrganizm(zmienna);
     }
 }
 
@@ -36,6 +53,10 @@ int Organizm::getY() {
 }
 int Organizm::getSila() {
     return sila;
+}
+
+void Organizm::setSila(int ilosc) {
+    sila += ilosc;
 }
 
 int Organizm::getWiek() {

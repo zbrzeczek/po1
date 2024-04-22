@@ -33,6 +33,7 @@ public:
     int getX();
     int getY();
     int getSila();
+    void setSila(int ilosc);
     int getWiek();
     int getCzyZwierze();
     virtual string getNazwe();

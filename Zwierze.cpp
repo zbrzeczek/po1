@@ -8,8 +8,8 @@
 string Zwierze::getNazwe() {
     return " ";
 }
-int Zwierze::getSila() {
-    return sila;
+int Zwierze::getIni() {
+    return inicjatywa;
 }
 void Zwierze::changePos(int y, int x) {
 

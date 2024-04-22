@@ -37,7 +37,7 @@ int Swiat::getGameOver() {
     return czyGameOver;
 }
 Organizm *Swiat::getPolePlanszy(int x, int y) {
-    if (x >= 0 && x < width && y >= 0 && y < height){
+    if (x >= 0 && x < getWidth() && y >= 0 && y < getHeight()){
         return planszaGry->getOrganizmZPlanszy(x, y);
     }
     return nullptr;
@@ -58,8 +58,8 @@ void Swiat::sortKolejkeAkcji() {
                 return bVar->getWiek() > aVar->getWiek(); // If inicjatywa is the same, sort by wiek in descending order
             }
         }
-        else if (a->getCzyZwierze()) return false;
-        else if (b->getCzyZwierze()) return true;
+        else if (b != nullptr && b->getCzyZwierze()) return true;
+        else return false;
     });
 
     for (Organizm *org : organizmy) {
@@ -79,8 +79,6 @@ void Swiat::delOrganizm(Organizm *del) {
     kolejkaAkcji.erase(remove_if(kolejkaAkcji.begin(), kolejkaAkcji.end(),
                               [del](Organizm* org) { return org == del; }),
                     kolejkaAkcji.end());
-    string kom = del->getNazwe() + ": \tsmierc organizmu";
-    this->addKom(kom);
     delete del;
     liczbaOrg--;
 }
