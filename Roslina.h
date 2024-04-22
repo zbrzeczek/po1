@@ -11,6 +11,7 @@ class Roslina : public Organizm {
 public:
     Roslina(int sila, Point point, Swiat *swiat) : Organizm(sila, point, swiat, FALSE) {}
 
+    string getNazwe() override;
     virtual void rozprz();
 
     char symbolOrg() override;

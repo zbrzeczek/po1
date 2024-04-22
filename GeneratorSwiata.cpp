@@ -23,7 +23,7 @@ void GeneratorSwiata::GenerujSwiat()
     height = swiat->getHeight();
     width = swiat->getWidth();
     iloscOrgLacznie = height * POLOWA * width * POLOWA * DEFAULT_ZAL;
-    iloscTypu = iloscOrgLacznie/5;
+    iloscTypu = iloscOrgLacznie/7;
 
 
     int* wszystkiePola = new int[height * width];
@@ -59,26 +59,25 @@ void GeneratorSwiata::GenerujSwiat()
         Organizm* antylopa = new Antylopa(point, swiat);
         swiat->addOrganizm(antylopa);
 
-        /*
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* trawa = new Trawa(x, y, _swiat);
-        _swiat->DodajOrganizm(trawa);
+        Organizm* trawa = new Trawa(point, swiat);
+        swiat->addOrganizm(trawa);
 
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);;
-        Organizm* mlecz = new Mlecz(x, y, _swiat);
-        _swiat->DodajOrganizm(mlecz);
+        Organizm* mlecz = new Mlecz(point, swiat);
+        swiat->addOrganizm(mlecz);
 
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* guarana = new Guarana(x, y, _swiat);
-        _swiat->DodajOrganizm(guarana);
+        Organizm* guarana = new Guarana(point, swiat);
+        swiat->addOrganizm(guarana);
 
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* jagoda = new Wilcze_jagody(x, y, _swiat);
-        _swiat->DodajOrganizm(jagoda);
+        Organizm* jagoda = new WilczeJagody(point, swiat);
+        swiat->addOrganizm(jagoda);
 
         odczytajMiejsceOrg(wszystkiePola, &point, &zmiennaSzukania, width, height);
-        Organizm* barszcz = new Barszcz_sosnowskiego(x, y, _swiat);
-        _swiat->DodajOrganizm(barszcz);*/
+        Organizm* barszcz = new BarszczSosn(point, swiat);
+        swiat->addOrganizm(barszcz);
     }
 }
 

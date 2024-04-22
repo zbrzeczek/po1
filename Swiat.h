@@ -25,6 +25,8 @@ private:
     vector<Organizm *> organizmy;
     Plansza* planszaGry;
     int czyGameOver;
+    vector<string> komentarze;
+    int numKomentarzy;
 protected:
     //vector od najmniejszej inicjatywy do najwiekszej
     vector<Organizm *> kolejkaAkcji;
@@ -37,6 +39,8 @@ public:
     int getGameOver();
     Plansza* getPlansza();
     Organizm* getPolePlanszy(int x, int y);
+    void addKom(string kom);
+
     void addOrganizm(Organizm *nowy);
     void delOrganizm(Organizm* del);
 
@@ -44,6 +48,7 @@ public:
     void wykonajTure();
     void rysujSwiat();
 
+    ~Swiat();
 };
 
 

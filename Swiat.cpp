@@ -4,11 +4,15 @@
 
 #include "Swiat.h"
 
+#include <utility>
+
 Swiat::Swiat(int width, int height, Plansza *plansza) {
     this->width = width;
     this->height = height;
     this->planszaGry = plansza;
     czyGameOver = FALSE;
+    numKomentarzy = 0;
+    liczbaOrg = 0;
     /*
     _liczbaOrgBezNowonarodzonych = 0;
     _tura = 0;
@@ -33,10 +37,14 @@ int Swiat::getGameOver() {
     return czyGameOver;
 }
 Organizm *Swiat::getPolePlanszy(int x, int y) {
-    if ((x > 0) && (x < (width + 1)) && (y > 0) && (y < (height + 1))){
-        return planszaGry->getOrganizmZPlanszy(x-1, y-1);
+    if (x >= 0 && x < width && y >= 0 && y < height){
+        return planszaGry->getOrganizmZPlanszy(x, y);
     }
     return nullptr;
+}
+void Swiat::addKom(string kom) {
+    komentarze.push_back(kom);
+    numKomentarzy++;
 }
 
 void Swiat::sortKolejkeAkcji() {
@@ -55,27 +63,32 @@ void Swiat::sortKolejkeAkcji() {
 
 void Swiat::addOrganizm(Organizm *nowy) {
     organizmy.push_back(nowy);
+    liczbaOrg++;
 }
 
 void Swiat::delOrganizm(Organizm *del) {
     organizmy.erase(remove_if(organizmy.begin(), organizmy.end(),
                                    [del](Organizm* org) { return org == del; }),
                     organizmy.end());
+    kolejkaAkcji.erase(remove_if(kolejkaAkcji.begin(), kolejkaAkcji.end(),
+                              [del](Organizm* org) { return org == del; }),
+                    kolejkaAkcji.end());
+    string kom = del->getNazwe() + ": \tsmierc organizmu";
+    this->addKom(kom);
+    delete del;
+    liczbaOrg--;
 }
 
 void Swiat::wykonajTure() {
     sortKolejkeAkcji();
 
-    for (Organizm* org : kolejkaAkcji) {
-        std::cout << "Inicjatywa: " << org->getIni() << ", Wiek: " << org->getWiek() << std::endl;
-    }
     //// tutaj musi spawdzqac ta iunicjatywe kto sie pierwszy ruszy ale to pozniej
     for (int i = kolejkaAkcji.size(); i > 0; i--){
         kolejkaAkcji[i-1]->akcja();
         kolejkaAkcji.pop_back();
     }
 
-    for (int i = 0; i < organizmy.size(); i++){
+    for (int i = 0; i < liczbaOrg; i++){
         organizmy[i]->starszyWiek();
     }
 }
@@ -91,9 +104,9 @@ void Swiat::rysujSwiat() {
         for (int x = 0; x < (width + 2); x++){
             if ((x == 0) || (y == 0) || (x == width + 1) || (y == height + 1)) cout << '#';
             else {
-                if (getPolePlanszy(x, y) == nullptr) cout << ' ';
+                if (getPolePlanszy(x-1, y-1) == nullptr) cout << ' ';
                 else {
-                    cout << getPolePlanszy(x, y)->symbolOrg();
+                    cout << getPolePlanszy(x-1, y-1)->symbolOrg();
                 }
             }
         }
@@ -102,4 +115,15 @@ void Swiat::rysujSwiat() {
 
     cout << endl;
 
+    for (int i = 0; i < numKomentarzy; i++){
+        cout << komentarze[i] << endl;
+    }
+    while (!komentarze.empty()){
+        komentarze.pop_back();
+    }
+    numKomentarzy = 0;
+}
+
+Swiat::~Swiat() {
+    delete planszaGry;
 }

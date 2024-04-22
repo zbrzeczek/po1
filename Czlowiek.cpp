@@ -2,38 +2,49 @@
 // Created by Zuza on 2024-04-03.
 //
 
+#include "Swiat.h"
 #include "Czlowiek.h"
+
+string Czlowiek::getNazwe() {
+    return "Czlowiek";
+}
 
 void Czlowiek::ruch() {
     char ch;
-    cin >> ch;
+    int x = point.x;
+    int y = point.y;
+    int wybieranie = TRUE;
 
-    switch (ch) {
-        case 'w':
-            changePos(-1,0);
-            break;
-        case 's':
-            changePos(1,0);
-            break;
-        case 'd':
-            changePos(0,1);
-            break;
-        case 'a':
-            changePos(0,-1);
-            break;
-        default:
-            break;
+    while (wybieranie) {
+        wybieranie = FALSE;
+        cin >> ch;
+
+        switch (ch) {
+            case 'w':
+                y--;
+                break;
+            case 's':
+                y++;
+                break;
+            case 'd':
+                x++;
+                break;
+            case 'a':
+                x--;
+                break;
+            default:
+                break;
+        }
+
+        if (walidacjaRuchu(x, y) == POLE_PUSTE) changePos(y, x);
+        else if (walidacjaRuchu(x, y) == KOLIZJA) {
+            kolizja(getSwiat()->getPolePlanszy(x, y));
+            changePos(y, x);
+        }
+        else wybieranie = TRUE;
     }
 }
-
-//void Czlowiek::rozmnazanie() {
-
-//}
 
 char Czlowiek::symbolOrg() {
     return 'C';
 }
-
-//void Czlowiek::wyswietlInfo() {
-
-//}

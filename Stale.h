@@ -5,6 +5,8 @@
 #ifndef PO1_STALE_H
 #define PO1_STALE_H
 
+using namespace std;
+
 #define TRUE 1
 #define FALSE 0
 #define DEFAULT_ZAL 0.1

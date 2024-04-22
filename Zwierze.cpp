@@ -5,53 +5,50 @@
 #include "Swiat.h"
 #include "Zwierze.h"
 
+string Zwierze::getNazwe() {
+    return " ";
+}
 int Zwierze::getSila() {
     return sila;
 }
 void Zwierze::changePos(int y, int x) {
 
-    point.x += x;
-    point.y += y;
+    point.x = x;
+    point.y = y;
 }
 void Zwierze::ruch() {
     int los;
-    int losowanie =TRUE;
+    int x = point.x;
+    int y = point.y;
+    int losowanie = TRUE;
+
     while (losowanie) {
         los = rand() % 4;
 
         losowanie = FALSE;
         switch (los) {
             case GORA:
-                if (walidacjaRuchu(0, -1) == POLE_PUSTE) changePos(-1, 0);
-                else if (walidacjaRuchu(0, -1) == KOLIZJA) {
-                    if (kolizja(getSwiat()->getPolePlanszy(point.x, point.y-1))) changePos(-1, 0);
-                }
-                else losowanie = TRUE;
+                y--;
                 break;
             case DOL:
-                if (walidacjaRuchu(0, 1) == POLE_PUSTE) changePos(1, 0);
-                else if (walidacjaRuchu(0, 1) == KOLIZJA){
-                    if (kolizja(getSwiat()->getPolePlanszy(point.x, point.y+1))) changePos(1, 0);
-                }
-                else losowanie = TRUE;
+                y++;
                 break;
             case PRAWO:
-                if (walidacjaRuchu(1, 0) == POLE_PUSTE) changePos(0, 1);
-                else if (walidacjaRuchu(1, 0) == KOLIZJA){
-                    if (kolizja(getSwiat()->getPolePlanszy(point.x +1, point.y))) changePos(0, 1);
-                }
-                else losowanie = TRUE;
+                x++;
                 break;
             case LEWO:
-                if (walidacjaRuchu(-1, 0) == POLE_PUSTE) changePos(0, -1);
-                else if (walidacjaRuchu(-1, 0) == KOLIZJA) {
-                    if (kolizja(getSwiat()->getPolePlanszy(point.x -1, point.y))) changePos(0, -1);
-                }
-                else losowanie = TRUE;
+                x--;
                 break;
             default:
                 break;
         }
+
+        if (walidacjaRuchu(x, y) == POLE_PUSTE) changePos(y, x);
+        else if (walidacjaRuchu(x, y) == KOLIZJA) {
+            kolizja(getSwiat()->getPolePlanszy(x, y));
+            changePos(y, x);
+        }
+        else losowanie = TRUE;
     }
 }
 

@@ -15,20 +15,19 @@ char Organizm::symbolOrg() {
     return ' ';
 }
 
-int Organizm::kolizja(Organizm *other) {
+void Organizm::kolizja(Organizm *other) {
     if (other->czyZwierze){
         Zwierze *zmienna = dynamic_cast<Zwierze*>(other);
         Zwierze *zmienna2 = dynamic_cast<Zwierze*>(this);
         if (zmienna->getSila() < zmienna2->getSila() || (zmienna->getSila() == zmienna2->getSila() && zmienna->getWiek() < zmienna2->getWiek())){
+            cout << this->getNazwe() << " zabija " << other->getNazwe();
             swiat->delOrganizm(other);
-            return TRUE;
         }
-        else return FALSE;
+        else {
+            cout << other->getNazwe() << " zabija " << this->getNazwe();
+            swiat->delOrganizm(this);
+        }
     }
-    /*else {
-        Roslina *zmienna = dynamic_cast<Zwierze*>(other);
-    }*/
-    return FALSE;
 }
 
 int Organizm::getX() {
@@ -47,10 +46,16 @@ int Organizm::getWiek() {
 Swiat *Organizm::getSwiat() {
     return swiat;
 }
+string Organizm::getNazwe() {
+    return " ";
+}
+int Organizm::getCzyZwierze() {
+    return czyZwierze;
+}
 
 int Organizm::walidacjaRuchu(int x, int y) {
-    if (point.x + x < swiat->getWidth() && point.x + x > 0 &&  point.y + y < swiat->getHeight() && point.y + y> 0){
-        if (swiat->getPolePlanszy(point.x + x , point.y + y) == nullptr) return POLE_PUSTE;
+    if (x < swiat->getWidth() && x >= 0 &&  y < swiat->getHeight() && y >= 0){
+        if (swiat->getPolePlanszy(x , y) == nullptr) return POLE_PUSTE;
         else return KOLIZJA;
     }
     else return FALSE;

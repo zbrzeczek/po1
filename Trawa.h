@@ -11,6 +11,8 @@ class Trawa : public Roslina{
 public:
     Trawa(Point point, Swiat* swiat) : Roslina(0, point, swiat) {}
 
+    string getNazwe() override;
+
     void rozprz() override;
 
     char symbolOrg() override;

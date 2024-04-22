@@ -11,7 +11,7 @@ int main() {
     int game = TRUE;
     int inputBool  =TRUE;
 
-    cout << "Nacisnij klawisz aby zaczac gre" << endl;
+    cout << "Nacisnij klawisz aby szaczac gre" << endl;
     cin >> input;
 
     Plansza nowaPlansza(20, 20);

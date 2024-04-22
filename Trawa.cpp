@@ -4,6 +4,9 @@
 
 #include "Trawa.h"
 
+string Trawa::getNazwe() {
+    return "Trawa";
+}
 void Trawa::rozprz() {
 
 }

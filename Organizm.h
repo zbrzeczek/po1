@@ -27,13 +27,15 @@ public:
     void rysowanie();
 
     virtual char symbolOrg();
-    int kolizja(Organizm *other);
+    void kolizja(Organizm *other);
     //virtual void wyswietlInfo();
 
     int getX();
     int getY();
     int getIni();
     int getWiek();
+    int getCzyZwierze();
+    virtual string getNazwe();
     Swiat *getSwiat();
 
     int walidacjaRuchu(int x, int y);

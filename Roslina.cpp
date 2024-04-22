@@ -4,9 +4,13 @@
 
 #include "Roslina.h"
 
+string Roslina::getNazwe() {
+    return " ";
+}
 void Roslina::rozprz() {
 
 }
 
 char Roslina::symbolOrg() {
+    return ' ';
 }

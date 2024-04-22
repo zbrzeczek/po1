@@ -11,8 +11,9 @@ class Antylopa : public Zwierze{
 public:
     Antylopa(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
+    string getNazwe() override;
     //void rozmnazanie() override;
-
+    void ruch() override;
     char symbolOrg() override;
 };
 

@@ -11,6 +11,7 @@ class Owca : public Zwierze{
 public:
     Owca(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
+    string getNazwe() override;
     //void rozmnazanie() override;
 
     char symbolOrg() override;

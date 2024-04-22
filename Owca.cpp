@@ -4,6 +4,9 @@
 
 #include "Owca.h"
 
+string Owca::getNazwe() {
+    return "Owca";
+}
 char Owca::symbolOrg() {
     return 'O';
 }

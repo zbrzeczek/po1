@@ -12,7 +12,12 @@
 #include "Lis.h"
 #include "Zolw.h"
 #include "Antylopa.h"
-/*
+
 #include "Trawa.h"
-*/
+#include "Mlecz.h"
+#include "Guarana.h"
+#include "WilczeJagody.h"
+#include "BarszczSosn.h"
+
+
 #endif //PO1_WSZYSTKIEORG_H

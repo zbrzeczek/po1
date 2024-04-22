@@ -13,6 +13,7 @@ private:
 public:
     Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(ini, point, swiat, TRUE), sila(sila) {}
 
+    string getNazwe() override;
     //virtual void rozmnazanie();
     virtual void ruch();
     int getSila();

@@ -14,6 +14,7 @@ class Czlowiek : public Zwierze {
 public:
     Czlowiek(Point point, Swiat* swiat) : Zwierze(5, 4, point, swiat) {}
 
+    string getNazwe() override;
     void ruch() override;
     //void rozmnazanie() override;
 
