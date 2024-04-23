@@ -13,6 +13,7 @@ public:
 
     string getNazwe() override;
 
+    void akcja() override;
     void rozprz() override;
 
     char symbolOrg() override;

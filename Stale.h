@@ -17,6 +17,7 @@ using namespace std;
 #define DOL 3
 #define POLE_PUSTE 1
 #define KOLIZJA 2
+#define PRAWD_ROZSIANIA 10
 
 
 #endif //PO1_STALE_H

@@ -13,7 +13,7 @@ public:
 
     string getNazwe() override;
     bool ucieczka(Organizm* other) override;
-    //void rozmnazanie() override;
+    void rozmnazanie() override;
     void ruch() override;
     char symbolOrg() override;
 };

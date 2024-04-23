@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
 
 #include "Point.h"
 
@@ -23,10 +24,14 @@ private:
 public:
     GeneratorSwiata(Swiat* swiat);
 
-    void GenerujSwiat();
 
-    //bool Wczytaj_swiat();
-    //void Zapisz_swiat();
+    void GenerujSwiat();
+    void GenerowanieMapowaniaPktOrg(int *wszystkiePola, int iloscOrg, int height, int width);
+    void odczytajMiejsceOrg(int* wszystkiePola, Point *point, int * zmiennaSzukania, int width, int height);
+    void generujOrganizmZZapisu(string name, int x, int y);
+
+    void wczytaj(Swiat *swiat);
+    void zapisz(Swiat *swiat);
 
     ~GeneratorSwiata();
 };

@@ -12,7 +12,8 @@ public:
     Zolw(Point point, Swiat* swiat) : Zwierze(2, 1, point, swiat) {}
 
     string getNazwe() override;
-    //void rozmnazanie() override;
+    bool obroniony(Organizm* other) override;
+    void rozmnazanie() override;
     void ruch() override;
     char symbolOrg() override;
 };

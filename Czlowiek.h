@@ -11,15 +11,19 @@
 using namespace std;
 
 class Czlowiek : public Zwierze {
+private:
+    int coolDown;
+    int dodatkowaSila;
 public:
-    Czlowiek(Point point, Swiat* swiat) : Zwierze(5, 4, point, swiat) {}
+    Czlowiek(Point point, Swiat* swiat) : Zwierze(5, 4, point, swiat), coolDown(5), dodatkowaSila(10) {}
 
     string getNazwe() override;
     void ruch() override;
-    //void rozmnazanie() override;
+    void moc();
+
+    int getCoolDown();
 
     char symbolOrg() override;
-    //void wyswietlInfo() override;
 
 };
 

@@ -3,12 +3,16 @@
 //
 
 #include "Swiat.h"
+#include "GeneratorSwiata.h"
 #include "Czlowiek.h"
 
 string Czlowiek::getNazwe() {
     return "Czlowiek";
 }
 
+int Czlowiek::getCoolDown() {
+    return coolDown;
+}
 void Czlowiek::ruch() {
     char ch;
     int x, y;
@@ -17,30 +21,48 @@ void Czlowiek::ruch() {
     while (wybieranie) {
         x = getX();
         y = getY();
-        wybieranie = FALSE;
+        cout << "Ruch czlowieka" << endl;
         cin >> ch;
 
+        wybieranie = FALSE;
         switch (ch) {
             case 'w':
-                y--;
+                if(getY() - 1 >= 0) this->changePos(y-1,x);
+                else wybieranie = TRUE;
                 break;
             case 's':
-                y++;
+                if(getY() + 1 < getSwiat()->getHeight()) this->changePos(y+1,x);
+                else wybieranie = TRUE;
                 break;
             case 'd':
-                x++;
+                if(getX() + 1 < getSwiat()->getWidth()) this->changePos(y,x+1);
+                else wybieranie = TRUE;
                 break;
             case 'a':
-                x--;
+                if(getX() - 1 > 0) this->changePos(y,x-1);
+                else wybieranie = TRUE;
+                break;
+            case 'u':
+                if (getCoolDown() < 5) {
+                    cout << "Nie mozna uruchomic umiejetnosci" << endl;
+                }
+                else {
+                    moc();
+                    cout << "Uruchomiono umiejetnosc" << endl;
+                }
+                wybieranie = TRUE;
                 break;
             default:
                 break;
         }
-
-        wybieranie = ruchWalidacja(y, x);
     }
+    this->setSila(dodatkowaSila - coolDown);
+    if (getCoolDown() < 5) coolDown++;
 }
 
+void Czlowiek::moc() {
+    coolDown = 0;
+}
 char Czlowiek::symbolOrg() {
     return 'C';
 }

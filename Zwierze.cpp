@@ -23,22 +23,24 @@ void Zwierze::ruch() {
         losowanie = FALSE;
         switch (los) {
             case GORA:
-                y--;
+                if(getY() - 1 >= 0) this->changePos(y-1,x);
+                else losowanie = TRUE;
                 break;
             case DOL:
-                y++;
+                if(getY() + 1 < getSwiat()->getHeight()) this->changePos(y+1,x);
+                else losowanie = TRUE;
                 break;
             case PRAWO:
-                x++;
+                if(getX() + 1 < getSwiat()->getWidth()) this->changePos(y,x+1);
+                else losowanie = TRUE;
                 break;
             case LEWO:
-                x--;
+                if(getX() - 1 > 0) this->changePos(y,x-1);
+                else losowanie = TRUE;
                 break;
             default:
                 break;
         }
-
-        losowanie = ruchWalidacja(y, x);
     }
 }
 

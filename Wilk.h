@@ -12,7 +12,7 @@ public:
     Wilk(Point point, Swiat* swiat) : Zwierze(9, 5, point, swiat) {}
 
     string getNazwe() override;
-    //void rozmnazanie() override;
+    void rozmnazanie() override;
     char symbolOrg() override;
 };
 

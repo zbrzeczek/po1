@@ -37,7 +37,6 @@ public:
     virtual char symbolOrg();
     void kolizja(Organizm *other);
     void ucieczkaPole();
-    //virtual void wyswietlInfo();
 
     void setSila(int ilosc);
     void zabity(Organizm* oprawca);
@@ -55,11 +54,9 @@ public:
 
     bool teSameOrg(Organizm *drugi);
     bool taSamaPozycja(Organizm *drugi);
-    int ruchWalidacja(int y, int x);
     void changePos(int y, int x);
 
     void starszyWiek();
-
 };
 
 

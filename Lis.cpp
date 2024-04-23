@@ -21,24 +21,47 @@ void Lis::ruch() {
         losowanie = FALSE;
         switch (los) {
             case GORA:
-                y--;
+                if(getY() - 1 >= 0) y--;
+                else losowanie = TRUE;
                 break;
             case DOL:
-                y++;
+                if(getY() + 1 < getSwiat()->getHeight()) y++;
+                else losowanie = TRUE;
                 break;
             case PRAWO:
-                x++;
+                if(getX() + 1 < getSwiat()->getWidth()) x++;
+                else losowanie = TRUE;
                 break;
             case LEWO:
-                x--;
+                if(getX() - 1 > 0) x--;
+                else losowanie = TRUE;
                 break;
             default:
                 break;
         }
+        Organizm *zmienna = getSwiat()->getPolePlanszy(y, x);
 
-        losowanie = ruchWalidacja(y, x);
+        if (zmienna != nullptr){
+            if (zmienna->getSila() > this->getSila()) losowanie = TRUE;
+            else this->changePos(y,x);
+        }
+        else this->changePos(y,x);
     }
 }
+
+void Lis::rozmnazanie() {
+    int zmiennaX = this->getX();
+    int zmiennaY = this->getY();
+    getSwiat()->znajdzWolnePole(&zmiennaY, &zmiennaY);
+
+    Point zmienna;
+    zmienna.x = zmiennaX;
+    zmienna.y = zmiennaY;
+    Lis* nowa = new Lis(zmienna, getSwiat());
+    this->getSwiat()->addOrganizm(nowa);
+    this->getSwiat()->addKom("Pojawilo sie nowe zwierze: Lis");
+}
+
 char Lis::symbolOrg() {
     return 'L';
 }

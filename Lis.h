@@ -12,7 +12,7 @@ public:
     Lis(Point point, Swiat* swiat) : Zwierze(3, 7, point, swiat) {}
 
     string getNazwe() override;
-    //void rozmnazanie() override;
+    void rozmnazanie() override;
     void ruch() override;
     char symbolOrg() override;
 

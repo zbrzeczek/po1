@@ -6,7 +6,10 @@
 #include "Roslina.h"
 
 void Roslina::akcja() {
-    rozprz();
+    int prawdopodobienstwo = rand() % 10;
+    if (prawdopodobienstwo == 0){
+        rozprz();
+    }
 }
 string Roslina::getNazwe() {
     return " ";
