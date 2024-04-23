@@ -8,9 +8,8 @@
 string Zwierze::getNazwe() {
     return " ";
 }
-int Zwierze::getIni() {
-    return inicjatywa;
-}
+
+void Zwierze::rozmnazanie() {}
 
 void Zwierze::ruch() {
     int los, x, y;

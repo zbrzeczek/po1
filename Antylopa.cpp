@@ -9,6 +9,16 @@ string Antylopa::getNazwe() {
     return "Antylopa";
 }
 
+bool Antylopa::ucieczka(Organizm *other) {
+    int random = rand() % 2;
+    if (random == 0){
+        ucieczkaPole();
+        getSwiat()->addKom("Antylopa uciekla przed: " + other->getNazwe());
+        return true;
+    }
+    return false;
+}
+
 void Antylopa::ruch() {
     int los, x, y;
     int losowanie = TRUE;

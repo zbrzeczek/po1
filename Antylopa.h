@@ -12,6 +12,7 @@ public:
     Antylopa(Point point, Swiat* swiat) : Zwierze(4, 4, point, swiat) {}
 
     string getNazwe() override;
+    bool ucieczka(Organizm* other) override;
     //void rozmnazanie() override;
     void ruch() override;
     char symbolOrg() override;

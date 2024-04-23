@@ -23,6 +23,7 @@ private:
     int width, height, liczbaOrg;
     //aha tu nwm co bo rosliny nie maja ini i sie nie ruszaja
     vector<Organizm *> organizmy;
+    Czlowiek *czlowiek;
     Plansza* planszaGry;
     int czyGameOver;
     vector<string> komentarze;
@@ -34,6 +35,8 @@ public:
 
     Swiat(int width, int height, Plansza *plansza);
 
+    void setCzlowiek(Czlowiek *czlowiek);
+
     int getWidth();
     int getHeight();
     int getGameOver();
@@ -42,9 +45,9 @@ public:
     void addKom(string kom);
 
     void addOrganizm(Organizm *nowy);
-    void delOrganizm(Organizm* del);
+    void usunOrg(Organizm * del);
+    void usunZabite();
 
-    void sortKolejkeAkcji();
     void wykonajTure();
     void rysujSwiat();
 

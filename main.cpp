@@ -6,18 +6,21 @@
 
 int main() {
     srand(time(NULL));
-    char input;
+    int y, x;
 
     int game = TRUE;
     int inputBool  =TRUE;
 
-    cout << "Nacisnij klawisz aby szaczac gre" << endl;
-    cin >> input;
+    cout << "wysokosc planszy" << endl;
+    cin >> y;
+    cout << "wysokosc planszy" << endl;
+    cin >> x;
 
-    Plansza nowaPlansza(20, 20);
-    Swiat nowySwiat(20, 20, &nowaPlansza);
+    Plansza nowaPlansza(x, y);
+    Swiat nowySwiat(x, y, &nowaPlansza);
     GeneratorSwiata generator(&nowySwiat);
     generator.GenerujSwiat();
+    printf("Zuzanna Brzeczek 198256");
     nowySwiat.rysujSwiat();
 
     while(!nowySwiat.getGameOver()){

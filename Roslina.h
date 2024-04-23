@@ -9,7 +9,7 @@
 
 class Roslina : public Organizm {
 public:
-    Roslina(int sila, Point point, Swiat *swiat) : Organizm(sila, point, swiat, FALSE) {}
+    Roslina(int sila, Point point, Swiat *swiat) : Organizm(sila, 0,  point, swiat, FALSE) {}
 
     string getNazwe() override;
     virtual void rozprz();

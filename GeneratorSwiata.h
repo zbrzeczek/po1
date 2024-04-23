@@ -24,8 +24,7 @@ public:
     GeneratorSwiata(Swiat* swiat);
 
     void GenerujSwiat();
-    void GenerowanieMapowaniaPktOrg(int *wszystkiePola, int iloscOrg, int height, int width);
-    void odczytajMiejsceOrg(int* wszystkiePola, Point *point, int * zmiennaSzukania, int width, int height);
+
     //bool Wczytaj_swiat();
     //void Zapisz_swiat();
 

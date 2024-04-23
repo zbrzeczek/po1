@@ -8,13 +8,11 @@
 #include "Organizm.h"
 
 class Zwierze : public Organizm {
-private:
-    int inicjatywa;
 public:
-    Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(sila, point, swiat, TRUE), inicjatywa(ini) {}
+    Zwierze(int sila, int ini, Point point, Swiat *swiat) : Organizm(sila, ini, point, swiat, TRUE){}
 
     string getNazwe() override;
-    //virtual void rozmnazanie();
+    void rozmnazanie() override;
     virtual void ruch();
     int getIni();
 

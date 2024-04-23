@@ -14,30 +14,42 @@ class Swiat;
 class Organizm {
 private:
     int sila;
+    int ini;
     int wiek;
     Swiat *swiat;
-    int czyZwierze;
+    bool czyZwierze;
+    bool czyZabity;
 protected:
     Point point;
+    Point prevPoint;
 public:
-    Organizm(int sila, Point point, Swiat *swiat, int czyZwierze) : czyZwierze(czyZwierze), wiek(0), sila(sila), point(point), swiat(swiat) {}
+    Organizm(int sila,int ini , Point point, Swiat *swiat, int czyZwierze) : ini(ini), czyZwierze(czyZwierze), wiek(0), sila(sila), point(point), swiat(swiat) {}
 
     virtual void akcja();
+    virtual void rozmnazanie();
+    void walka(Organizm* other);
+    virtual bool ucieczka(Organizm* other);
+    virtual bool obroniony(Organizm* other);
+    void cofnijRuch();
 
     void rysowanie();
 
     virtual char symbolOrg();
     void kolizja(Organizm *other);
+    void ucieczkaPole();
     //virtual void wyswietlInfo();
+
+    void setSila(int ilosc);
+    void zabity(Organizm* oprawca);
 
     int getX();
     int getY();
     int getSila();
-    void setSila(int ilosc);
+    int getIni();
     int getWiek();
-    int getCzyZwierze();
+    bool getCzyZwierze();
+    bool getCzyZabity();
     virtual string getNazwe();
-
     string getPoint();
     Swiat *getSwiat();
 

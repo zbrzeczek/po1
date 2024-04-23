@@ -13,14 +13,11 @@ Swiat::Swiat(int width, int height, Plansza *plansza) {
     czyGameOver = FALSE;
     numKomentarzy = 0;
     liczbaOrg = 0;
-    /*
-    _liczbaOrgBezNowonarodzonych = 0;
-    _tura = 0;
-    _czyCzlowiekZyje = false;
-    _czlowiek = nullptr;
-    _komentarze = new string[KOMENTARZE_NA_ORG *  * m];
-    _liczbaKomentarzy = 0;
-*/
+    this->czlowiek = nullptr;
+}
+
+void Swiat::setCzlowiek(Czlowiek *czlowiek) {
+    this->czlowiek = czlowiek;
 }
 
 //gettery
@@ -47,61 +44,40 @@ void Swiat::addKom(string kom) {
     numKomentarzy++;
 }
 
-void Swiat::sortKolejkeAkcji() {
-    sort(organizmy.begin(), organizmy.end(), [](Organizm *a, Organizm *b){
-        if (a->getCzyZwierze() && b->getCzyZwierze()) {
-            Zwierze *aVar = dynamic_cast<Zwierze*>(a);
-            Zwierze *bVar = dynamic_cast<Zwierze*>(b);
-            if (bVar->getIni() != aVar->getIni()) {
-                return aVar->getIni() > bVar->getIni(); // Sort by initiative in descending order
-            } else {
-                return aVar->getWiek() > bVar->getWiek(); // If initiative is the same, sort by age in descending order
-            }
-        }
-        else if (b == nullptr || !b->getCzyZwierze()) return false;
-        else return true;
-    });
-
-    for (Organizm *org : organizmy) {
-        if(org->getCzyZwierze() == TRUE) kolejkaAkcji.push_back(org);
-    }
-
-}
-
 void Swiat::addOrganizm(Organizm *nowy) {
-    organizmy.push_back(nowy);
-    liczbaOrg++;
+    for (int i = 0; i < this->organizmy.size(); i++){
+        if (this->organizmy[i]->getIni() < nowy->getIni()){
+            organizmy.insert(organizmy.begin() + i, nowy);
+        }
+    }
+    if (organizmy.empty()) organizmy.push_back(nowy);
+    //organizmy.push_back(nowy);
 }
 
-void Swiat::delOrganizm(Organizm *del) {
-    Czlowiek *zmienna = dynamic_cast<Czlowiek*>(del);
-    if (zmienna) czyGameOver = TRUE;
-    organizmy.erase(remove_if(organizmy.begin(), organizmy.end(),
-                                   [del](Organizm* org) { return org == del; }),
-                    organizmy.end());
-    kolejkaAkcji.erase(remove_if(kolejkaAkcji.begin(), kolejkaAkcji.end(),
-                              [del](Organizm* org) { return org == del; }),
-                    kolejkaAkcji.end());
-    delete del;
-    liczbaOrg--;
+void Swiat::usunOrg(Organizm *del) {
+    this->organizmy.erase(std::remove(organizmy.begin(), organizmy.end(), del), organizmy.end());
+}
+
+void Swiat::usunZabite(){
+    for (Organizm* i : this->organizmy){
+        if (i->getCzyZabity()) {
+            usunOrg(i);
+        }
+    }
 }
 
 void Swiat::wykonajTure() {
-    sortKolejkeAkcji();
-    int i =0;
     //// tutaj musi spawdzqac ta iunicjatywe kto sie pierwszy ruszy ale to pozniej
-    while (i < kolejkaAkcji.size()){
-        kolejkaAkcji[i]->akcja();
-        i++;
-    }
-    for (int j = 0; j < kolejkaAkcji.size(); j++){
-        kolejkaAkcji.pop_back();
+    for (int i = 0; i < organizmy.size(); i++){
+        if (!kolejkaAkcji[i]->getCzyZabity()) kolejkaAkcji[i]->akcja();
     }
 
     for (int x = 0; x < liczbaOrg; x++){
         organizmy[x]->starszyWiek();
     }
+    usunZabite();
 }
+
 void Swiat::rysujSwiat() {
     planszaGry->wyczyscPlansze();
 
